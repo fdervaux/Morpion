@@ -22,6 +22,10 @@ public class BoxViewController : MonoBehaviour, IPointerEnterHandler
         _button.Select();
     }
     
+    public void BlockButton()
+    {
+        _button.interactable = false;
+    }
 
     public void printCross()
     {
@@ -54,11 +58,5 @@ public class BoxViewController : MonoBehaviour, IPointerEnterHandler
     {
         _button = GetComponent<Button>();
         _viewController = GetComponentInParent<ViewController>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

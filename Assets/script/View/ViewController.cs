@@ -9,6 +9,8 @@ public class ViewController : MonoBehaviour
 
     public GameObject _boxesOwner;
 
+    public MenuWInDrawController _menuWinDraw;
+
     private List<BoxViewController> _boxes = new List<BoxViewController>();
 
     public Vector2Int getCoordsWithIndex(int index)
@@ -17,15 +19,52 @@ public class ViewController : MonoBehaviour
         return new Vector2Int(index % bounds.x, index / bounds.y);
     }
 
+
+
     public void updateView()
     {
         Debug.Log(_boxes.Count);
+
+        if (!_gridData.getIsPlayable())
+        {
+            for (int i = 0; i < _boxes.Count; i++)
+            {
+                _boxes[i].BlockButton();
+            }
+
+            _menuWinDraw.gameObject.SetActive(true);
+
+            if (_gridData.isDraw())
+            {
+                _menuWinDraw.printDraw();
+            }
+
+            if (_gridData.getWinner() != null)
+            {
+                if (_gridData.getWinner().state == BoxState.circle)
+                {
+                    _menuWinDraw.printCircleWin();
+                }
+
+                if (_gridData.getWinner().state == BoxState.cross)
+                {
+                    _menuWinDraw.printCrossWin();
+                }
+            }
+
+
+
+            return;
+        }
+
+        _menuWinDraw.gameObject.SetActive(false);
+
         for (int i = 0; i < _boxes.Count; i++)
         {
             Vector2Int coords = getCoordsWithIndex(i);
             BoxState state = _gridData.getBoxState(coords.x, coords.y);
 
-            if (state == BoxState.none)
+            if (state == BoxState.empty)
             {
                 _boxes[i].printNothing();
             }
@@ -59,9 +98,9 @@ public class ViewController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void sendRestart()
     {
-
+        _gameManager.restart();
     }
+
 }
