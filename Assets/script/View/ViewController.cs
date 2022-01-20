@@ -23,8 +23,6 @@ public class ViewController : MonoBehaviour
 
     public void updateView()
     {
-        Debug.Log(_boxes.Count);
-
         if (!_gridData.getIsPlayable())
         {
             for (int i = 0; i < _boxes.Count; i++)
