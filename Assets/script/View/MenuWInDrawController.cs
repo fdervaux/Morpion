@@ -13,8 +13,8 @@ public class MenuWInDrawController : MonoBehaviour
 
     public void printDraw()
     {
-        _cross.enabled = false;
-        _circle.enabled = false;
+        _cross.enabled = true;
+        _circle.enabled = true;
         _text.text = "Draw!";
     }
 
