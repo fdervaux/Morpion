@@ -20,6 +20,27 @@ public class ViewController : MonoBehaviour
     }
 
 
+    public void updateBox(BoxState state, int i, int j)
+    {
+        int index = i + j * _gridData.getBounds().x;
+
+        if (state == BoxState.empty)
+        {
+            _boxes[index].printNothing();
+        }
+
+        if (state == BoxState.cross)
+        {
+            _boxes[index].printCross();
+        }
+
+        if (state == BoxState.circle)
+        {
+            _boxes[index].printCircle();
+        }
+
+       _boxes[index].startAnimationEnter();
+    }
 
     public void updateView()
     {
@@ -49,8 +70,6 @@ public class ViewController : MonoBehaviour
                     _menuWinDraw.printCrossWin();
                 }
             }
-
-
 
             return;
         }

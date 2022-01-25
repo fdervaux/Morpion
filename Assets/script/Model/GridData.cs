@@ -113,12 +113,31 @@ public class GridData : MonoBehaviour
             _nbBoxEmpty--;
         }
 
-        _viewController.updateView();
+        _viewController.updateBox(boxState,i,j);
+
     }
 
     public bool isUsed(int i, int j)
     {
         return _grid[i, j] != BoxState.empty;
+    }
+
+
+
+
+    public bool checkVictory()
+    {
+        for (int j = 0; j < _grid.GetLength(1); ++j)
+        {
+            if (_grid[0, j] != BoxState.empty
+                && _grid[0, j] == _grid[1, j]
+                && _grid[1, j] == _grid[2, j])
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 }
