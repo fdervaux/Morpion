@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4730801212218636659}
   - component: {fileID: 2359158795389993764}
   - component: {fileID: 2359158795389993767}
+  - component: {fileID: 1052667705}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -65,31 +66,7 @@ MonoBehaviour:
   circleImage: {fileID: 4919172462729727751}
   _button: {fileID: 2359158795389993767}
   _coords: {x: 0, y: 0}
-  _animationEnterDuration: 0.4
-  _animationEnterCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  _buttonEnterAnimation: {fileID: 1052667705}
 --- !u!114 &2359158795389993764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +145,76 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: BoxViewController, Assembly-CSharp
         m_MethodName: onClick
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1052667705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2359158795389993769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa4912cb7f61e4448c13197f90059c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animationDuration: 1
+  _animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _startAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  _endAnimation:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4730801212218636659}
+        m_TargetAssemblyTypeName: BoxViewController, Assembly-CSharp
+        m_MethodName: endButtonEnterAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _updateAnimation:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4730801212218636659}
+        m_TargetAssemblyTypeName: BoxViewController, Assembly-CSharp
+        m_MethodName: updateButtonEnterAnimation
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

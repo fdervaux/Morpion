@@ -17,13 +17,10 @@ public class BoxViewController : MonoBehaviour, IPointerEnterHandler
 
     public Vector2Int _coords;
 
-    public float _animationEnterDuration = 1.0f; //s
-
-    private float _animationEnterTimeRemaining = 0.0f; //s
-
     private Image _currentAnimatedImage = null;
 
-    public AnimationCurve _animationEnterCurve;
+    public PlayAnimation _buttonEnterAnimation;
+
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -39,8 +36,7 @@ public class BoxViewController : MonoBehaviour, IPointerEnterHandler
     {
         if (_currentAnimatedImage != null)
         {
-            _animationEnterTimeRemaining = _animationEnterDuration;
-            Debug.Log("test start animation");
+            _buttonEnterAnimation.Play();
         }
     }
 
@@ -80,27 +76,20 @@ public class BoxViewController : MonoBehaviour, IPointerEnterHandler
         _viewController = GetComponentInParent<ViewController>();
     }
 
+
+    public void updateButtonEnterAnimation(float factor)
+    {
+        _currentAnimatedImage.fillAmount = factor;
+    }
+
+    public void endButtonEnterAnimation()
+    {
+        _currentAnimatedImage.fillAmount = 1;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (_animationEnterTimeRemaining > 0)
-        {
-            // play animation
-            float animationFactor = 1 - _animationEnterTimeRemaining / _animationEnterDuration;
-            _currentAnimatedImage.fillAmount = _animationEnterCurve.Evaluate(animationFactor);
-            _animationEnterTimeRemaining -= Time.deltaTime;
-
-            Debug.Log(animationFactor);
-        }
-        else
-        {
-            if(_currentAnimatedImage != null)
-            {
-                _currentAnimatedImage.fillAmount = 1;
-                _currentAnimatedImage = null;
-            }
-            
-        }
 
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ViewController : MonoBehaviour
 {
@@ -12,6 +13,19 @@ public class ViewController : MonoBehaviour
     public MenuWInDrawController _menuWinDraw;
 
     private List<BoxViewController> _boxes = new List<BoxViewController>();
+
+    public GameObject[] bars;
+    public PlayAnimation enterAnimation;
+
+
+    public void resetView()
+    {
+        updateView();
+
+        
+        enterAnimation.Play();
+        
+    }
 
     public Vector2Int getCoordsWithIndex(int index)
     {
@@ -39,7 +53,7 @@ public class ViewController : MonoBehaviour
             _boxes[index].printCircle();
         }
 
-       _boxes[index].startAnimationEnter();
+        _boxes[index].startAnimationEnter();
     }
 
     public void updateView()
@@ -118,6 +132,21 @@ public class ViewController : MonoBehaviour
     public void sendRestart()
     {
         _gameManager.restart();
+    }
+
+    private void Update()
+    {
+    }
+
+
+    public void updateEnterAnimation(float factor)
+    {
+
+        Debug.Log(factor);
+        foreach (GameObject bar in bars)
+        {
+            bar.GetComponent<Image>().fillAmount = factor;
+        }
     }
 
 }

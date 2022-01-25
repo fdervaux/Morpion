@@ -63,7 +63,7 @@ public class GridData : MonoBehaviour
         _winner = null;
         _isDraw = false;
 
-        _viewController.updateView();
+        _viewController.resetView();
     }
 
     // Start is called before the first frame update
